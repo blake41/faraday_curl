@@ -27,7 +27,7 @@ module Faraday
         if env[:truncated_body].respond_to?(:read)
           command << "-d 'body is a stream, cant render it'"
         elsif env[:truncated_body].respond_to?(:to_str)
-          command << "-d '#{quote(env[:body].to_str)}'"
+          command << "-d '#{quote(env[:truncated_body].to_str)}'"
         elsif env[:truncated_body]
           command << "-d 'body is not string-like, cant render it'"
         end
